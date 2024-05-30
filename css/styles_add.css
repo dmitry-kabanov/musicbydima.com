@@ -1,0 +1,38 @@
+.artwork {
+  float: left;
+  border-radius: 0px;
+  height: 200px;
+  width: 200px;
+  margin-top: 0px;
+  margin-right: 1em;
+  clear: both;
+}
+
+section.article-content img {
+    display: block;
+    margin: 0 auto;
+}
+
+section.summary {
+    overflow: auto;
+    margin-bottom: 32px;
+}
+
+div#social {
+    overflow: auto;
+    margin: 0 auto;
+    text-align: center;
+    clear: both;
+}
+
+div#social img {
+    max-height: 32px;
+    padding: 0 16px;
+}
+
+div.container {
+    display: block;
+    margin: 12rem auto !important;
+    padding: 3rem auto !important;
+    text-align: center;
+}
