@@ -1,3 +1,14 @@
+html {
+    font-weight: 400;
+}
+
+div#main-top-container {
+  display: block;
+  margin: 12rem auto 7rem auto !important;
+  padding: 3rem auto !important;
+  text-align: center;
+}
+
 .artwork {
   float: left;
   border-radius: 0px;
@@ -32,7 +43,7 @@ div#social img {
 
 div.container {
     display: block;
-    margin: 12rem auto !important;
+    margin: 12rem auto;
     padding: 3rem auto !important;
     text-align: center;
 }
