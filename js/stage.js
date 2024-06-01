@@ -8,7 +8,8 @@
  * while everyone else takes their sweet time getting ready for the show.
  */
 
-$("#cover-page, .article-cover").ready(function () {
+$("#cover-page, .article-cover").ready(function() {
+
   var breakpoint = 768;
   var transparentNavBackgroundColor = "rgba(0,0,0,0)";
   var transparentNavLinkColor = "#fff";
@@ -32,10 +33,10 @@ $("#cover-page, .article-cover").ready(function () {
     $(".navbar").removeClass("navbar-inverse");
     $(".navbar").css("background-color", defaultBackgroundColor);
     $(".navbar").css("border-color", defaultBorderColor);
-    $(".navbar a").css("color", defaultLinkColor);
+    $(".navbar a").css("color",defaultLinkColor);
   }
 
-  $(window).resize(function () {
+  $(window).resize(function() {
     if ($(window).width() < breakpoint) {
       navbarOpaque();
     } else if (!scrolledPastCover) {
@@ -43,11 +44,11 @@ $("#cover-page, .article-cover").ready(function () {
     }
   });
   if ($(window).width() > breakpoint) {
-    $("#cover-page, .article-cover").waypoint(function (direction) {
+    $( "#cover-page, .article-cover" ).waypoint(function(direction) {
       navbarTransparent();
     });
-    $("#main-container").waypoint(function (direction) {
-      if (direction === "up") {
+    $( "#main-container" ).waypoint(function(direction) {
+      if (direction === 'up') {
         navbarTransparent();
         scrolledPastCover = false;
       } else {
@@ -64,27 +65,28 @@ $("#cover-page, .article-cover").ready(function () {
  * probably not going to need to mess with this.
  */
 
-$(document).ready(function () {
+$(document).ready(function() {
+
   $(window).stellar();
 
   if ($("#TableOfContents").length != 0) {
     $("#TableOfContents").affix({
       offset: {
-        top: $("#TableOfContents").offset().top - 60,
-      },
+        top: $("#TableOfContents").offset().top - 60
+      }
     });
-  }
+  };
 
   if ($(".jp-jplayer").length != 0) {
-    $(".jp-jplayer").each(function () {
+    $(".jp-jplayer").each( function() {
       var parent = $(this).parent();
-      var id = parent.attr("id");
-      var datasrc = parent.attr("data-src");
-      var title = parent.attr("title");
-      var selector = "#jquery_jplayer_" + id;
-      $(selector).jPlayer({
+      var id = parent.attr('id');
+      var datasrc = parent.attr('data-src');
+      var title = parent.attr('title');
+      var selector = "#jquery_jplayer_"+id;
+      $( selector ).jPlayer({
         ready: function (event) {
-          console.log("???");
+          console.log("???")
           $(this).jPlayer("setMedia", {
             title: title,
             m4a: datasrc,
@@ -96,28 +98,26 @@ $(document).ready(function () {
         keyEnabled: true,
         remainingDuration: false,
         toggleDuration: false,
-        cssSelectorAncestor: "#jp_container_" + id,
+        cssSelectorAncestor: '#jp_container_'+id
       });
+
     });
-  }
+  };
 
   if ($(".img-modal").length != 0) {
-    $("body").append(
-      '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"></div></div></div></div>'
-    );
+    $("body").append('<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"></div></div></div></div>');
   }
 
-  $(".img-modal").on("click", function () {
+  $('.img-modal').on('click',function(){
     console.log(this);
-    var src = $(this).attr("src");
-    var img =
-      '<img src="' + src + '" class="img-responsive" style="width:100%"/>';
-    $("#myModal").modal();
-    $("#myModal").on("shown.bs.modal", function () {
-      $("#myModal .modal-body").html(img);
+    var src = $(this).attr('src');
+    var img = '<img src="' + src + '" class="img-responsive" style="width:100%"/>';
+    $('#myModal').modal();
+    $('#myModal').on('shown.bs.modal', function(){
+      $('#myModal .modal-body').html(img);
     });
-    $("#myModal").on("hidden.bs.modal", function () {
-      $("#myModal .modal-body").html("");
+    $('#myModal').on('hidden.bs.modal', function(){
+      $('#myModal .modal-body').html('');
     });
   });
 });
