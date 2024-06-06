@@ -2,6 +2,10 @@ html {
     font-weight: 400;
 }
 
+body {
+    font-family: "Source Sans 3";
+}
+
 div#main-top-container {
   display: block;
   margin: 12rem auto 7rem auto !important;
