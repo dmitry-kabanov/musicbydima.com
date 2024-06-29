@@ -4,10 +4,17 @@
     <title>Music by Dima</title>
     <link>https://musicbydima.com/</link>
     <description>Recent content on Music by Dima</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Jun 2024 00:00:53 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://musicbydima.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://musicbydima.com/release/dk/2024-06-27-belle/</link>
+      <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://musicbydima.com/release/dk/2024-06-27-belle/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Will There Be Light? (Piano solo)</title>
       <link>https://musicbydima.com/score/2024/2024-04-11-will-there-be-light/</link>
