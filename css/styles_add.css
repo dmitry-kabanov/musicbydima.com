@@ -84,3 +84,30 @@ a:hover {
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   text-decoration: underline;
 }
+
+#cookies-consent {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #2a6496;
+  color: #fefefe;
+  padding: 1rem;
+  z-index: 9999;
+  text-align: center;
+}
+
+#cookies-consent > button {
+  border: none;
+  border-radius: 2px;
+  padding: 0 8px 0 8px;
+  margin: 0 8px;
+}
+
+#cookies-decline-btn {
+  background-color: #f44336;  // Red.
+}
+
+#cookies-accept-btn {
+  background-color: #04AA6D;  // Green.
+}

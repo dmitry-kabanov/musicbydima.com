@@ -162,20 +162,20 @@
       </div>
 
 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP0285JX5P"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-JP0285JX5P');
-        }
-      </script>
+<div id="cookies-consent">
+  <p>We use Google Analytics on this website to understand our audience. Do you consent?</p>
+  <button id="cookies-decline-btn">Decline</button>
+  <button id="cookies-accept-btn">Accept</button>
+</div>
+
+
+<script>
+  localStorage.setItem("isProduction", 1);
+  localStorage.setItem("googleAnalyticsId", "G-JP0285JX5P" );
+</script>
+
+<script src="js/cookies-consent.js" type="text/javascript"></script>
+
 
     </footer>
   </body>
