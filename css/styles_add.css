@@ -85,7 +85,7 @@ a:hover {
   text-decoration: underline;
 }
 
-#cookies-consent {
+#cookies-consent-banner {
   display: none;
   position: fixed;
   bottom: 0;
@@ -97,17 +97,17 @@ a:hover {
   text-align: center;
 }
 
-#cookies-consent > button {
+#cookies-consent-banner > button {
   border: none;
   border-radius: 2px;
   padding: 0 8px 0 8px;
   margin: 0 8px;
 }
 
-#cookies-decline-btn {
-  background-color: #f44336;  // Red.
+#cookies-reject-btn {
+  background-color: #f44336;
 }
 
 #cookies-accept-btn {
-  background-color: #04AA6D;  // Green.
+  background-color: #04AA6D;
 }
