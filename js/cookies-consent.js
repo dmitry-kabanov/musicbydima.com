@@ -1,37 +1,12 @@
 const DAYS_COOKIES_DURATION = 30;
 
-function loadAnalytics() {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    window.gtag = gtag;
-
-    const isProduction = localStorage.getItem("isProduction");
-    const googleAnalyticsId = localStorage.getItem("googleAnalyticsId");
-    if (isProduction == "1") {
-        gtag("consent", "default", {
-            "analytics_storage": "denied",
-            "ad_storage": "denied",
-            "ad_user_data": "denied",
-            "ad_personalization": "denied",
-        });
-
-        const consent = getCookie('cookie_consent');
-        if (consent === 'accepted') {
-            updateConsent("granted");
-        }
-
-        const s = document.createElement('script');
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + googleAnalyticsId;
-        s.async = true;
-        document.head.appendChild(s);
-
-        gtag('js', new Date());
-        gtag('config', googleAnalyticsId);
-    }
-    else {
-        setCookie("google_analytics_test", "testing_on_dev", 1);
-    }
-}
+// ISO 3166-1 alpha-2 codes for EU/EEA, UK, and Switzerland
+const GDPR_COUNTRIES_LIST = new Set([
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
+  'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
+  'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO',
+  'GB', 'CH'
+]);
 
 function onCookiesAccepted() {
     updateConsent("granted");
@@ -65,19 +40,74 @@ function getCookie(name) {
     return match ? match[2] : null;
 }
 
-// On page load: check consent
-loadAnalytics();
+function showBanner() {
+    const banner = document.getElementById("cookies-consent-banner");
+    if (banner) {
+        banner.style.display = 'block';
+    }
+}
+
+function hideBanner() {
+    const banner = document.getElementById("cookies-consent-banner");
+    if (banner) {
+        banner.style.display = 'none';
+    }
+}
+
+async function checkGDPRLocation() {
+	const cachedCountry = getCookie("cached_country");
+	if (cachedCountry) {
+		return GDPR_COUNTRIES_LIST.includes(cachedCountry);
+	}
+
+	try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort, 1500);
+        const response = await fetch("https://api.country.is");
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            throw new Error("Geo reponse error: " + response.status);
+        }
+
+        const data = await response.json();
+        const country = (data.country || "").toUpperCase();
+
+        if (country) {
+            setCookie("cached_country", country, DAYS_COOKIES_DURATION);
+            return GDPR_COUNTRIES_LIST.includes(country);
+        }
+        return true;
+	} catch (error) {
+        console.warn("Could not check for GDPR country: " + error);
+        return false;
+	}
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const consentCookieValue = getCookie("cookie_consent");
-    const banner = document.getElementById("cookies-consent-banner");
-    const rejectButton = document.getElementById('cookies-reject-btn');
-    const acceptButton = document.getElementById('cookies-accept-btn');
 
-    if (consentCookieValue != "accepted" && consentCookieValue != "rejected" && banner) {
+    if (consentCookieValue == "accepted") {
+        updateConsent("granted");
+        return;
+    }
+
+    if (consentCookieValue == "rejected") {
+        updateConsent("denied");
+        return;
+    }
+
+    // Visitor has not accepted or rejected cookies.
+    const isGDPRLocation = checkGDPRLocation();
+
+    if (isGDPRLocation) {
+        showBanner();
+        const rejectButton = document.getElementById('cookies-reject-btn');
+        const acceptButton = document.getElementById('cookies-accept-btn');
         rejectButton.addEventListener("click", onCookiesRejected);
         acceptButton.addEventListener("click", onCookiesAccepted);
-        banner.style.display = 'block';
+    } else {
+        updateConsent("granted");
     }
 });
 
