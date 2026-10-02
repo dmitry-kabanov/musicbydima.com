@@ -1,12 +1,12 @@
 const DAYS_COOKIES_DURATION = 30;
 
 // ISO 3166-1 alpha-2 codes for EU/EEA, UK, and Switzerland
-const GDPR_COUNTRIES_LIST = new Set([
+const GDPR_COUNTRIES_LIST = [
   'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
   'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
   'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO',
   'GB', 'CH'
-]);
+];
 
 function onCookiesAccepted() {
     updateConsent("granted");
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Visitor has not accepted or rejected cookies.
     const isGDPRLocation = checkGDPRLocation();
 
-    if (isGDPRLocation) {
+    if (isGDPRLocation.value) {
         showBanner();
         const rejectButton = document.getElementById('cookies-reject-btn');
         const acceptButton = document.getElementById('cookies-accept-btn');
