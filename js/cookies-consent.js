@@ -84,7 +84,7 @@ async function checkGDPRLocation() {
 	}
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const consentCookieValue = getCookie("cookie_consent");
 
     if (consentCookieValue == "accepted") {
@@ -98,9 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Visitor has not accepted or rejected cookies.
-    const isGDPRLocation = checkGDPRLocation();
+    const isGDPRLocation = await checkGDPRLocation();
 
-    if (isGDPRLocation.value) {
+    if (isGDPRLocation) {
         showBanner();
         const rejectButton = document.getElementById('cookies-reject-btn');
         const acceptButton = document.getElementById('cookies-accept-btn');
