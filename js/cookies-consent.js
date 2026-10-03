@@ -60,28 +60,76 @@ async function checkGDPRLocation() {
 		return GDPR_COUNTRIES_LIST.includes(cachedCountry);
 	}
 
-	try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort, 1500);
-        const response = await fetch("https://api.country.is");
-        clearTimeout(timeoutId);
+    let checkers = [];
 
-        if (!response.ok) {
-            throw new Error("Geo reponse error: " + response.status);
+    if (Math.random() < 0.5) {
+        checkers = [checkViaApiCountryIs, checkViaCloudflare];
+    } else {
+        checkers = [checkViaCloudflare, checkViaApiCountryIs];
+    }
+
+    let countryCode = null;
+
+    for (const checker of checkers) {
+        try{
+            countryCode = await checker(2000);
+            if (countryCode) {
+                break;
+            }
+        } catch (error) {
+            console.warn("Could not check for GDPR country: " + error);
         }
+    }
 
-        const data = await response.json();
-        const country = (data.country || "").toUpperCase();
+    if (countryCode) {
+        setCookie("cached_country", countryCode, DAYS_COOKIES_DURATION);
+        return GDPR_COUNTRIES_LIST.includes(countryCode);
+    }
 
-        if (country) {
-            setCookie("cached_country", country, DAYS_COOKIES_DURATION);
-            return GDPR_COUNTRIES_LIST.includes(country);
-        }
-        return true;
-	} catch (error) {
-        console.warn("Could not check for GDPR country: " + error);
-        return false;
-	}
+    console.warn("Could not determine country code, defaulting to GDPR.");
+    return true;  // Fallback to GDPR for legal safety.
+}
+
+async function checkViaApiCountryIs(timeout) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort, timeout);
+    const response = await fetch("https://api.country.is", {
+        signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+        throw new Error("[checkViaApiCountryIs] Response status: " + response.status);
+    }
+
+    const data = await response.json();
+    const country = (data.country || "").toUpperCase();
+    if (!country) {
+        throw new Error("[checkViaApiCountryIs] No country code"); 
+    }
+
+    return country;
+}
+
+async function checkViaCloudflare(timeout) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort, timeout);
+    const response = await fetch("https://cloudflare.com/cdn-cgi/trace", {
+        signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+        throw new Error("[checkViaCloudflare] Response status: " + response.status);
+    }
+
+    const data = await response.text();
+    const match = data.match(/^loc=([A-Z]{2})$/m);
+    if (!match || !match[1]) {
+        throw new Error("[checkViaCloudflare] No country code found");
+    }
+
+    return match[1];
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
