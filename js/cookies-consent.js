@@ -105,7 +105,7 @@ async function checkViaApiCountryIs(timeout) {
     const data = await response.json();
     const country = (data.country || "").toUpperCase();
     if (!country) {
-        throw new Error("[checkViaApiCountryIs] No country code"); 
+        throw new Error("[checkViaApiCountryIs] No country code");
     }
 
     return country;

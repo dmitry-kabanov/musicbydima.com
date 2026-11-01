@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Scores (2023) on Music by Dima (Music by Dmitry Kabanov)</title>
+		<link>https://musicbydima.com/score/2023/</link>
+		<description>Recent content in Scores (2023) on Music by Dima (Music by Dmitry Kabanov)</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+			<managingEditor>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</managingEditor>
+		
+		
+			<webMaster>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</webMaster>
+		
+		
+			<copyright>© 2026 Dmitry Kabanov</copyright>
+		
+		
+			<lastBuildDate>Thu, 14 Dec 2023 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://musicbydima.com/score/2023/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Smoke</title>
+				<link>https://musicbydima.com/score/2023/2023-12-14-smoke/</link>
+				<pubDate>Thu, 14 Dec 2023 00:00:00 +0000</pubDate><author>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</author>
+				<guid>https://musicbydima.com/score/2023/2023-12-14-smoke/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Walking Alone (Piano solo)</title>
+				<link>https://musicbydima.com/score/2023/2023-11-28-walking-alone/</link>
+				<pubDate>Tue, 28 Nov 2023 00:00:00 +0000</pubDate><author>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</author>
+				<guid>https://musicbydima.com/score/2023/2023-11-28-walking-alone/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Missed Love (Piano solo)</title>
+				<link>https://musicbydima.com/score/2023/2023-10-09-missed-love/</link>
+				<pubDate>Mon, 09 Oct 2023 00:00:00 +0000</pubDate><author>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</author>
+				<guid>https://musicbydima.com/score/2023/2023-10-09-missed-love/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

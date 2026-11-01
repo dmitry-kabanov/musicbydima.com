@@ -3,17 +3,20 @@ html {
 }
 
 body {
-    font-family: "Source Sans 3";
     color: #111;
     background-color: #f1f0eb;
     background-color: rgb(252, 250, 250);
+    max-width: 100%;
 }
 
-div#main-top-container {
-  display: block;
-  margin: 12rem auto 7rem auto !important;
-  padding: 3rem auto !important;
-  text-align: center;
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#recent-releases {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .artwork {
@@ -34,13 +37,6 @@ section.article-content img {
 section.summary {
     overflow: auto;
     margin-bottom: 32px;
-}
-
-div#social {
-    overflow: auto;
-    margin: 0 auto;
-    text-align: center;
-    clear: both;
 }
 
 div#social img {
@@ -65,23 +61,6 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
-}
-
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: #333;
-  background-color: transparent;
-}
-
-.navbar-default .navbar-brand {
-  color: #333;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: #333;
-}
-
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   text-decoration: underline;
 }
 

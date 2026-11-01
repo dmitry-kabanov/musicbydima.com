@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Artists on Music by Dima</title>
+		<title>Artists on Music by Dima (Music by Dmitry Kabanov)</title>
 		<link>https://musicbydima.com/artist/</link>
-		<description>Recent content in Artists on Music by Dima</description>
+		<description>Recent content in Artists on Music by Dima (Music by Dmitry Kabanov)</description>
 		<generator>Hugo</generator>
 		<language>en-us</language>
 		
+			<managingEditor>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</managingEditor>
 		
+		
+			<webMaster>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</webMaster>
+		
+		
+			<copyright>© 2026 Dmitry Kabanov</copyright>
 		
 		
 			<atom:link href="https://musicbydima.com/artist/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Dmitry I. Kabanov</title>
 				<link>https://musicbydima.com/artist/dmitry.i.kabanov/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</author>
 				<guid>https://musicbydima.com/artist/dmitry.i.kabanov/</guid>
-				<description></description>
+				<description>Music written mostly for acoustic instruments such as piano or orchestral instruments</description>
 			</item>
 			<item>
 				<title>Phaktorial</title>
 				<link>https://musicbydima.com/artist/phaktorial/</link>
-				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</author>
 				<guid>https://musicbydima.com/artist/phaktorial/</guid>
-				<description></description>
+				<description>Instrumental hip-hop beats</description>
 			</item>
 	</channel>
 </rss>

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Tags on Music by Dima</title>
+		<title>Tags on Music by Dima (Music by Dmitry Kabanov)</title>
 		<link>https://musicbydima.com/tags/</link>
-		<description>Recent content in Tags on Music by Dima</description>
+		<description>Recent content in Tags on Music by Dima (Music by Dmitry Kabanov)</description>
 		<generator>Hugo</generator>
 		<language>en-us</language>
 		
+			<managingEditor>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</managingEditor>
 		
+		
+			<webMaster>dmitry.i.kabanov@outlook.com (Dmitry Kabanov)</webMaster>
+		
+		
+			<copyright>© 2026 Dmitry Kabanov</copyright>
 		
 		
 			<atom:link href="https://musicbydima.com/tags/index.xml" rel="self" type="application/rss+xml" />
