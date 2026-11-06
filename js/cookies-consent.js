@@ -31,7 +31,7 @@ function setCookiesConsentState(nextConsentState, { saveCookiesConsent = true} =
             if (prevConsentState == CONSENT_STATE.REJECTED) {
                 gtag("event", "page_view");
             }
-            if (saveCookiesConsent) {
+            if (saveCookiesConsent && prevConsentState != CONSENT_STATE.ACCEPTED) {
                 setCookie('cookie_consent', CONSENT_STATE.ACCEPTED, DAYS_COOKIES_DURATION);
             }
             hideBanner();
@@ -39,7 +39,7 @@ function setCookiesConsentState(nextConsentState, { saveCookiesConsent = true} =
         case CONSENT_STATE.REJECTED:
             updateConsent("denied");
             deleteGoogleAnalyticsCookies();
-            if (saveCookiesConsent) {
+            if (saveCookiesConsent && prevConsentState != CONSENT_STATE.REJECTED) {
                 setCookie('cookie_consent', CONSENT_STATE.REJECTED, DAYS_COOKIES_DURATION);
             }
             hideBanner();
@@ -110,11 +110,6 @@ function hideBanner() {
 }
 
 async function checkGDPRLocation() {
-	const cachedCountry = getCookie("cached_country");
-	if (cachedCountry) {
-		return GDPR_COUNTRIES_LIST.includes(cachedCountry);
-	}
-
     let checkers = [];
 
     if (Math.random() < 0.5) {
@@ -137,7 +132,6 @@ async function checkGDPRLocation() {
     }
 
     if (countryCode) {
-        setCookie("cached_country", countryCode, DAYS_COOKIES_DURATION);
         return GDPR_COUNTRIES_LIST.includes(countryCode);
     }
 
@@ -191,6 +185,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         event.preventDefault();
         showBanner();
     });
+
+    // TODO: Remove this block on 2027-11-01
+    const cachedCountryCookie = getCookie("cached_country");
+    if (cachedCountryCookie) {
+        deleteCookie("cached_country");
+    }
 
     const consentCookieValue = getCookie("cookie_consent");
 

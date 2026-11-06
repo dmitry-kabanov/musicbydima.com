@@ -63,7 +63,7 @@ a:hover {
   text-decoration: underline;
 }
 
-#cookies-consent-banner {
+#cookie-consent-banner {
   display: none;
   position: fixed;
   bottom: 1rem;
@@ -83,13 +83,13 @@ a:hover {
   to { opacity: 1; }
 }
 
-#cookies-consent-banner.visible  {
+#cookie-consent-banner.visible  {
     display: block;
     animation-name: fadeIn;
     animation-duration: 1s;
 }
 
-#cookies-consent-banner > button {
+#cookie-consent-banner > button {
   border: none;
   border-radius: 0.25rem;
   padding: 0.25rem 1rem;
